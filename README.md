@@ -34,7 +34,7 @@ First, please make sure you have the latest version of Python installed.
 After that, you can follow the instructions below.
 
 ```
-git clone [https://github.com/IM-Deane/note-manager-python](https://github.com/IM-Deane/note-manager-python)
+git clone https://github.com/IM-Deane/note-manager-python
 ```
 
 ```
