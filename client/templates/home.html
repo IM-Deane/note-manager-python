@@ -1,0 +1,84 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<h1 align="center">Notes</h1>
+<ul class="list-group list-group-flush" id="notes">
+	{% for note in user.notes %}
+	<li data-id="{{ note.id }}" class="list-group-item">
+		{{ note.data }}
+		<!-- TODO: The parser is throwing an error, however the program still works -->
+		<button
+			type="button"
+			class="btn btn-link float-right"
+			data-toggle="modal"
+			data-target="#noteSettings"
+		>
+			Edit Note
+		</button>
+		<button
+			type="button"
+			class="close float-right"
+			onClick="deleteNote({{note.id}})"
+		>
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</li>
+	<!-- Modal -->
+	<div
+		class="modal fade"
+		id="noteSettings"
+		tabindex="-1"
+		role="dialog"
+		aria-labelledby="noteSettingsLabel"
+		aria-hidden="true"
+	>
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="noteSettingsLabel">Note settings</h5>
+					<button
+						type="button"
+						class="close"
+						data-dismiss="modal"
+						aria-label="Close"
+					>
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<label for="editNoteInput{{note.id}}">Update:</label>
+					<input
+						type="text"
+						minlength="2"
+						name="editNoteInput{{note.id}}"
+						id="editNoteInput{{note.id}}"
+						class="form-control"
+						placeholder="Best. app. ever."
+					/>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">
+						Close
+					</button>
+					<button
+						type="button"
+						class="btn btn-primary"
+						onClick="editNote({{note.id}})"
+					>
+						Save changes
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</ul>
+<br />
+<h2 class="h5 mt-4">Add a new note:</h2>
+<form method="POST">
+	<textarea name="note" id="note" class="form-control"></textarea>
+	<div align="center">
+		<br />
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</div>
+</form>
+{% endblock content %}
