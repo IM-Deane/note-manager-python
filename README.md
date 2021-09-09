@@ -19,7 +19,7 @@ I'm satisfied with the current implementation.
 
 ### Stack
 
-- Python 3.9.7 and the
+- Python 3.9.7 and
   [Flask framework](https://flask.palletsprojects.com/en/2.0.x/)
 - HTML template engine
   [Jinja](https://jinja.palletsprojects.com/en/3.0.x/templates/)
